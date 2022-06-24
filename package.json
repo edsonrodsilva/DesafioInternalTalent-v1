@@ -4,6 +4,9 @@
   "description": "Challenge Internal Talent",
   "main": "index.js",
   "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.ts",
+    "dev": "tsnd --exit-child --transpile-only --ignore-watch node_modules src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
