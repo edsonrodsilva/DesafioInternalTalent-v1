@@ -1,7 +1,7 @@
 import { prisma } from "../../../../databases/prisma-client";
 import { hash } from "bcrypt";
 
-interface ICreateCustomerUseCase {
+interface ICreateCustomer {
     name: string;
     email: string;
     password: string;
@@ -9,7 +9,7 @@ interface ICreateCustomerUseCase {
 }
 
 export class CreateCustomerUseCase {
-    async execute({ name, email, password, age }: ICreateCustomerUseCase) {
+    async execute({ name, email, password, age }: ICreateCustomer) {
 
         const customerExist = await prisma.customers.findFirst({
             where: {
