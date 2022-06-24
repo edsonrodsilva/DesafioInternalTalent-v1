@@ -8,43 +8,60 @@ datasource db {
 }
 
 model Addresses {
-  id         Int     @id @default(autoincrement())
-  receiver   String?
-  street     String?
-  number     String?
-  complement String?
-  district   String?
-  city       String?
-  state      String?
-  country    String?
+  id            Int             @id @default(autoincrement())
+  receiver      String?
+  street        String?
+  number        String?
+  complement    String?
+  district      String?
+  city          String?
+  state         String?
+  country       String?
+  DeliveriesMan DeliveriesMan[]
 
   @@map("addresses")
 }
 
 model Customers {
-  id         String   @id @default(uuid())
+  id         String       @id @default(uuid())
   name       String
-  email      String   @unique
+  email      String       @unique
   password   String
   age        Int?
   address    String?
-  active     Boolean  @default(true)
-  created_at DateTime @default(now())
-  updated_at DateTime @default(now())
-
+  active     Boolean      @default(true)
+  created_at DateTime     @default(now())
+  updated_at DateTime     @default(now())
   Deliveries Deliveries[]
+
   @@map("customers")
 }
 
 model Deliveries {
-  id             String    @id @default(uuid())
-  product        String
-  date           DateTime
-  customer_id    String
-  customer       Customers @relation(fields: [customer_id], references: [id])
-  date_received  DateTime?
-  date_delivered DateTime?
-
+  id              String         @id @default(uuid())
+  product         String
+  date            DateTime
+  customer_id     String
+  customer        Customers      @relation(fields: [customer_id], references: [id])
+  date_received   DateTime?
+  date_delivered  DateTime?
+  DeliveriesMan   DeliveriesMan? @relation(fields: [deliveriesManId], references: [id])
+  deliveriesManId String?
 
   @@map("deliveries")
+}
+
+model DeliveriesMan {
+  id         String       @id @default(uuid())
+  name       String
+  email      String
+  password   String
+  veicgle    String
+  address    Addresses?   @relation(fields: [address_id], references: [id])
+  address_id Int          @unique
+  created_at DateTime
+  updated_at DateTime
+  Deliveries Deliveries[]
+
+  @@map("deliveriesman")
 }
