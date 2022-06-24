@@ -34,6 +34,4 @@ export class CreateCustomerUseCase {
 
         return customer;
     }
-
-
 }

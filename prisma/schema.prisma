@@ -45,8 +45,8 @@ model Deliveries {
   customer        Customers      @relation(fields: [customer_id], references: [id])
   date_received   DateTime?
   date_delivered  DateTime?
-  DeliveriesMan   DeliveriesMan? @relation(fields: [deliveriesManId], references: [id])
   deliveriesManId String?
+  DeliveriesMan   DeliveriesMan? @relation(fields: [deliveriesManId], references: [id])
 
   @@map("deliveries")
 }
