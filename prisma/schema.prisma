@@ -1,17 +1,14 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model Addresses {
-  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  id         Int     @id @default(autoincrement())
   receiver   String?
   street     String?
   number     String?
@@ -25,15 +22,29 @@ model Addresses {
 }
 
 model Customers {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  id         String   @id @default(uuid())
   name       String
-  email      String
+  email      String   @unique
   password   String
-  age        Int
-  address    String
-  active     Boolean
-  created_at DateTime
-  updated_at DateTime
+  age        Int?
+  address    String?
+  active     Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
 
+  Deliveries Deliveries[]
   @@map("customers")
+}
+
+model Deliveries {
+  id             String    @id @default(uuid())
+  product        String
+  date           DateTime
+  customer_id    String
+  customer       Customers @relation(fields: [customer_id], references: [id])
+  date_received  DateTime?
+  date_delivered DateTime?
+
+
+  @@map("deliveries")
 }
