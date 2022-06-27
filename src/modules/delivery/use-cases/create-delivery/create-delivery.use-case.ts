@@ -1,4 +1,4 @@
-import { prisma } from "../../../../databases/prisma-client";
+import { prisma } from "@src/databases/prisma-client";
 
 interface ICreateDelivery {
     product: string;

@@ -1,4 +1,4 @@
-import { prisma } from "../../../../databases/prisma-client";
+import { prisma } from "@src/databases/prisma-client";
 
 export class FindAllCustomerUseCase {
     async execute() {
