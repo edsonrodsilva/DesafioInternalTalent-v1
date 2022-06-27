@@ -7,6 +7,10 @@
     "outDir": "dist",
     "sourceMap": true,
     "skipLibCheck": true,
+    "paths": {
+      "@src/*": ["./src/*"],
+      "@test/*": ["./test/*"]
+    },
     "typeRoots": [
       "node_modules/@types",
       "./typings",
