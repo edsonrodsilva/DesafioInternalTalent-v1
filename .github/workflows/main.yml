@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!
+        
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment:
+      name: dev
+      url: 'delivery-edson.com.br'
+    needs: build
+    steps:
+      - name: Run a one-line script
+        run: echo deploy dev
+        
+  deploy-hmg:
+    runs-on: ubuntu-latest
+    environment:
+      name: hmg
+      url: 'delivery-edson.com.br'
+    needs: deploy-dev
+    steps:
+      - name: Run a one-line script
+        run: echo deploy hmg
+        
+  deploy-prod:
+    runs-on: ubuntu-latest
+    environment:
+      name: hmg
+      url: 'delivery-edson.com.br'
+    needs: deploy-dev
+    steps:
+      - name: Run a one-line script
+        run: echo deploy prod
+        
