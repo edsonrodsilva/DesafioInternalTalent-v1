@@ -8,8 +8,12 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "paths": {
-      "@src/*": ["./src/*"],
-      "@test/*": ["./test/*"]
+      "@src/*": [
+        "./src/*"
+      ],
+      "@test/*": [
+        "./test/*"
+      ]
     },
     "typeRoots": [
       "node_modules/@types",
@@ -22,7 +26,8 @@
   },
   "include": [
     "src/**/*.ts",
-    "./typings/**/*.d.ts"
+    "./typings/**/*.d.ts",
+    "src/repositories/IDeliveryManRepositoryts"
   ],
   "exclude": [
     "node_modules/**",
