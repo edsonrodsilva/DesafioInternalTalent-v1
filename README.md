@@ -18,7 +18,24 @@ Criar uma API que contenha as seguintes Resources
 
 ## Rotas
 <!--ts-->
-...
+# CUSTOMERS RESOURSES
+| POST | api/customers
+
+| GET | api/customers  
+| GET | api/customers/{customerID}
+| GET | api/customers/{customerID}/deliveries
+
+# DELIVERIES RESOURSES
+| POST | api/deliveries
+| GET|HEAD | api/deliveries
+| GET|HEAD | api/deliveries/{deliveriesID}
+| GET|HEAD | api/deliveries/{customer_id/customers
+
+# DELIVERYMAN RESOURSES
+| POST | api/deliveryman
+| GET|HEAD | api/deliveryman
+| GET|HEAD | api/deliveryman/{deliverymanID}
+| GET|HEAD | api/deliveryman/{customer_id/delivery
 <!--te-->
 
 
@@ -68,5 +85,14 @@ Criar uma API que contenha as seguintes Resources
 <!--te-->
 
 ## Conclusão ##
-Criei a API usando o Repository Pattern....
+Criei a API usando o Repository Pattern
+
+Alguns princípios de SOLID utilidados
+S — Single Responsiblity Principle (Princípio da responsabilidade única)
+
+L — Liskov Substitution Principle (Princípio da substituição de Liskov)
+
+D — Dependency Inversion Principle (Princípio da inversão da dependência)
+
+
 
