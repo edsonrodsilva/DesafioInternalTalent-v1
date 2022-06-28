@@ -1,0 +1,13 @@
+import { DeliveryMan } from "@src/models/DeliveryMan";
+
+interface ICreateDeliveryMan {
+  create(name: string, email: string, password: string): void
+
+  findAll(): DeliveryMan[];
+
+  findById(id: string): DeliveryMan;
+
+  findByName(name: string): DeliveryMan[];
+
+  findByEmail(email: string): DeliveryMan;
+}

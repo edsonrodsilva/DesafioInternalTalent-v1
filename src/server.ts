@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
 import "./utils/module-alias";
 import "express-async-errors";
-import { routes } from "./routes";
+import { customerRoutes } from "./routes/customers.routes";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-app.use(routes);
+app.use(customerRoutes);
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
     if (err instanceof Error) {

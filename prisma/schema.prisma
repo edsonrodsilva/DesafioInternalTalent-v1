@@ -7,21 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Addresses {
-  id            Int            @id @default(autoincrement())
-  receiver      String?
-  street        String?
-  number        String?
-  complement    String?
-  district      String?
-  city          String?
-  state         String?
-  country       String?
-  DeliveriesMan DeliveriesMan?
-
-  @@map("addresses")
-}
-
 model Customers {
   id         String       @id @default(uuid())
   name       String
@@ -41,15 +26,13 @@ model Deliveries {
   id              String         @id @default(uuid())
   product         String
   date            DateTime       @default(now())
-  customer_id     String
   date_received   DateTime?
   date_delivered  DateTime?
   deliveriesManId String?
+  customer_id     String
   customer        Customers      @relation(fields: [customer_id], references: [id])
   DeliveriesMan   DeliveriesMan? @relation(fields: [deliveriesManId], references: [id])
 
-  @@index([customer_id], map: "deliveries_customer_id_fkey")
-  @@index([deliveriesManId], map: "deliveries_deliveriesManId_fkey")
   @@map("deliveries")
 }
 
@@ -58,12 +41,27 @@ model DeliveriesMan {
   name       String
   email      String
   password   String
-  veicgle    String
-  address_id Int          @unique
-  created_at DateTime
-  updated_at DateTime
-  address    Addresses    @relation(fields: [address_id], references: [id])
+  vehiche    String?
+  address_id Int?         @unique
+  created_at DateTime     @default(now())
+  updated_at DateTime     @default(now())
+  address    Addresses?   @relation(fields: [address_id], references: [id])
   Deliveries Deliveries[]
 
   @@map("deliveriesman")
+}
+
+model Addresses {
+  id            Int            @id @default(autoincrement())
+  receiver      String?
+  street        String?
+  number        String?
+  complement    String?
+  district      String?
+  city          String?
+  state         String?
+  country       String?
+  DeliveriesMan DeliveriesMan?
+
+  @@map("addresses")
 }

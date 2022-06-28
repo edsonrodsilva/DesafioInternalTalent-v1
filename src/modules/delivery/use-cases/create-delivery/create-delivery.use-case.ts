@@ -10,7 +10,7 @@ export class CreateDeliveryUseCase {
             throw new Error("Product missing");
         }
 
-        const customer_id = "3d144491-566f-4f84-b195-dbf883a2091c";
+        const customer_id = "80f47cad-1923-4cb2-9f50-45de81a3c132";
 
         const delivery = await prisma.deliveries.create({
             data: {
